@@ -16,6 +16,10 @@ Decorators for modern JavaScript.
 
 ---
 
+> **Please Note:** This is "Work in Progress" package. The new functionality will be added very slowly.
+
+---
+
 *If you use this project don't forget to give a ⭐ [star](https://www.npmjs.com/package/@corefunc/decorators) ⭐ to it on GitHub!*
 
 ---
