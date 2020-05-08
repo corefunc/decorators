@@ -1,0 +1,2 @@
+!function(t,e){"object"==typeof exports&&"undefined"!=typeof module?e(exports):"function"==typeof define&&define.amd?define(["exports"],e):e((t=t||self).CoreFuncDecorators={})}(this,(function(t){"use strict";t.attempt=function attempt(t){return function(e,n,o){const c=o.value;o.value=function(...e){try{const n=c.apply(this,e);return void 0!==n&&n.catch&&n.catch(n=>t(n,e)),n}catch(n){t(n,e)}}}},Object.defineProperty(t,"__esModule",{value:!0})}));
+//# sourceMappingURL=index.js.map

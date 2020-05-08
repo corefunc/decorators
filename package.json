@@ -1,0 +1,81 @@
+{
+  "author": "Anton Trofimenko",
+  "bugs": {
+    "url": "https://github.com/corefunc/decorators/issues"
+  },
+  "contributors": [
+    {
+      "email": "r37r0m0d3l@protonmail.com",
+      "name": "Anton Trofimenko"
+    }
+  ],
+  "dependencies": {},
+  "description": "Decorators for modern JavaScript",
+  "devDependencies": {
+    "@r37r0m0d3l/rollup-config-pkg": "git+https://github.com/r37r0m0d3l/rollup-config-pkg.git",
+    "babel-eslint": "10.1.0",
+    "eslint": "7.0.0",
+    "eslint-config-prettier": "6.11.0",
+    "eslint-plugin-jsdoc": "24.0.6",
+    "eslint-plugin-prettier": "3.1.3",
+    "jest": "26.0.1",
+    "npm-check": "5.9.2",
+    "prettier": "2.0.5"
+  },
+  "engines": {
+    "node": ">=12.9.0"
+  },
+  "engineStrict": true,
+  "exports": {
+    ".": {
+      "browser": {
+        "import": "./dist/index.mjs",
+        "require": "./dist/index.cjs"
+      },
+      "node": {
+        "import": "./dist/index.mjs",
+        "require": "./dist/index.cjs"
+      },
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist/index.cjs",
+    "dist/index.cjs.map",
+    "dist/index.d.ts",
+    "dist/index.js",
+    "dist/index.js.map",
+    "dist/index.mjs",
+    "dist/index.mjs.map"
+  ],
+  "homepage": "https://github.com/corefunc/decorators",
+  "keywords": [
+    "aop",
+    "aspects",
+    "decorator",
+    "decorators",
+    "mixin"
+  ],
+  "license": "MIT",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "name": "@corefunc/decorators",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/corefunc/decorators.git"
+  },
+  "scripts": {
+    "build": "rollup --config rollup.config.mjs",
+    "build:watch": "rollup --config rollup.config.mjs --watch",
+    "lint": "eslint ./src/**/*.mjs",
+    "lint:md": "remark .",
+    "package:upgrade": "npm-check --update",
+    "test": "jest",
+    "test:coverage": "jest --collect-coverage"
+  },
+  "type": "module",
+  "types": "./dist/index.d.ts",
+  "version": "0.0.1"
+}
