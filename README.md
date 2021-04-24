@@ -22,13 +22,17 @@ Decorators for modern JavaScript.
 ECMAScript Module.
 
 ```javascript
-import { attempt, measureExecution } from "@corefunc/decorators";
+import {
+  attempt, consoleGroup, measureExecution,
+} from "@corefunc/decorators";
 ```
 
 Deno (Pika [https://pika.dev/](https://pika.dev/))
 
 ```javascript
-import { attempt, measureExecution } from "https://cdn.pika.dev/@corefunc/decorators";
+import {
+  attempt, consoleGroup, measureExecution,
+} from "https://cdn.pika.dev/@corefunc/decorators";
 ```
 
 ---
@@ -56,13 +60,34 @@ class Kitty {
 new Kitty().meow(10, false);
 ```
 
+#### Console Group
+
+```typescript
+import { consoleGroup } from "@corefunc/decorators";
+
+class Class {
+  @consoleGroup("GROUP ASYNC")
+  async asyncRun() {
+    console.log("I'm async");
+  }
+  @consoleGroup("GROUP SYNC")
+  syncRun() {
+    console.log("I'm sync");
+  }
+}
+const test = new Class();
+test.syncRun();
+await test.asyncRun();
+```
+
 #### Measure Execution
 
 ```typescript
 import { measureExecution } from "@corefunc/decorators";
 
 class Class {
-  @measureExecution(/* conole.time() label text */ "long execution time here")
+  /* conole.time() label text */
+  @measureExecution("long execution time here")
   hardTask() {
     let result = 0;
     for (let index = 0; index < 1_000_000_000; index++) {
@@ -78,7 +103,7 @@ new Class().hardTask();
 
 ## See also
 
-[My other projects](https://r37r0m0d3l.icu/open_source_map)
+[💾 My other projects](https://r37r0m0d3l.icu/open_source_map)
 
 <img alt="Open Source" src="https://raw.githubusercontent.com/r37r0m0d3l/r37r0m0d3l/master/osmap.svg?sanitize=true" width="960" height="520" style="display:block;height:auto;margin-left:auto;margin-right:auto;min-height:520px;min-width:960px;width:100%;">
 

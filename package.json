@@ -9,14 +9,13 @@
       "name": "Anton Trofimenko"
     }
   ],
-  "dependencies": {},
   "description": "Decorators for modern JavaScript",
   "devDependencies": {
     "@r37r0m0d3l/rollup-config-pkg": "git+https://github.com/r37r0m0d3l/rollup-config-pkg.git",
     "babel-eslint": "10.1.0",
-    "eslint": "7.24.0",
-    "eslint-config-prettier": "8.2.0",
-    "eslint-plugin-jsdoc": "32.3.0",
+    "eslint": "7.25.0",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-jsdoc": "32.3.1",
     "eslint-plugin-prettier": "3.4.0",
     "jest": "26.6.3",
     "npm-check": "5.9.2",
@@ -77,5 +76,5 @@
   },
   "type": "module",
   "types": "./dist/index.d.ts",
-  "version": "0.0.2"
+  "version": "0.0.3"
 }

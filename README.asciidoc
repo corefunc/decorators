@@ -1,0 +1,118 @@
+image:https://raw.githubusercontent.com/corefunc/decorators/master/.github/assets/logo_128.png?raw=true[CoreFunc
+Decorators,title="CoreFunc Decorators"]
+
+== CoreFunc Decorators
+
+Decorators for modern JavaScript.
+
+https://npmjs.com/package/@corefunc/decorators[image:https://badgen.net/npm/v/@corefunc/decorators?&icon=npm&label=npm&color=DD3636[NPM Version]]
+https://npmjs.com/package/@corefunc/decorators[image:https://badgen.net/npm/dt/@corefunc/decorators?&icon=terminal&label[NPM Downloads]]
+https://github.com/corefunc/decorators[image:https://badgen.net/github/stars/corefunc/decorators?&icon=github&label=stars&color=FFCC33[GitHub Stars]]
+https://github.com/corefunc/decorators/blob/master/dist/index.d.ts[image:https://badgen.net/npm/types/@corefunc/decorators?&icon=typescript&label=types[TypeScript Typings]]
+https://travis-ci.com/github/corefunc/decorators[image:https://badgen.net/travis/corefunc/decorators?&icon=travis&label=build[Travis CI]]
+https://lgtm.com/projects/g/corefunc/decorators[image:https://badgen.net/lgtm/grade/g/corefunc/decorators?&icon=lgtm&label=lgtm:js/ts&color=00C853[LGTM]]
+
+'''''
+
+____
+*Please Note:* This is "Work in Progress" package. The new functionality
+will be added very slowly.
+____
+
+'''''
+
+=== Usage
+
+ECMAScript Module.
+
+[source,javascript]
+----
+import {
+  attempt, consoleGroup, measureExecution,
+} from "@corefunc/decorators";
+----
+
+Deno (Pika https://pika.dev/[https://pika.dev/])
+
+[source,javascript]
+----
+import {
+  attempt, consoleGroup, measureExecution,
+} from "https://cdn.pika.dev/@corefunc/decorators";
+----
+
+'''''
+
+=== Examples
+
+==== Method Decorators
+
+===== Attempt
+
+[source,typescript]
+----
+import { attempt } from "@corefunc/decorators";
+
+class Kitty {
+  @attempt((error: Error, args: any[]) => {
+    console.warn("Exception thrown!");
+    console.log(error.message); // "uwu"
+    console.dir(args); // [ 10, false ]
+  })
+  meow(volume: number, cute = true) {
+    throw new Error("uwu");
+  }
+}
+
+new Kitty().meow(10, false);
+----
+
+===== Console Group
+
+[source,typescript]
+----
+import { consoleGroup } from "@corefunc/decorators";
+
+class Class {
+  @consoleGroup("GROUP ASYNC")
+  async asyncRun() {
+    console.log("I'm async");
+  }
+  @consoleGroup("GROUP SYNC")
+  syncRun() {
+    console.log("I'm sync");
+  }
+}
+const test = new Class();
+test.syncRun();
+await test.asyncRun();
+----
+
+===== Measure Execution
+
+[source,typescript]
+----
+import { measureExecution } from "@corefunc/decorators";
+
+class Class {
+  /* conole.time() label text */
+  @measureExecution("long execution time here")
+  hardTask() {
+    let result = 0;
+    for (let index = 0; index < 1_000_000_000; index++) {
+      result += index;
+    }
+    return result;
+  }
+}
+new Class().hardTask();
+----
+
+'''''
+
+== See also
+
+https://r37r0m0d3l.icu/open_source_map[💾 My other projects]
+
+image:https://raw.githubusercontent.com/r37r0m0d3l/r37r0m0d3l/master/osmap.svg?sanitize=true[Open
+Source,width=960,height=520]

@@ -20,18 +20,28 @@
  * @since 0.0.1
  */
 export function attempt(handlerFunction) {
-  return function (_target, _key, descriptor) {
+  return function attemptDecorator(_target, _key, descriptor) {
     const originalMethod = descriptor.value;
-    descriptor.value = function (...args) {
-      try {
-        const value = originalMethod.apply(this, args);
-        if (value !== undefined && value.catch) {
-          value.catch((error) => handlerFunction(error, args));
+    if (Object.prototype.toString.call(originalMethod) === "[object AsyncFunction]") {
+      descriptor.value = async function (...args) {
+        try {
+          const value = await originalMethod.apply(this, args);
+          if (value !== undefined && value.catch) {
+            value.catch((error) => handlerFunction(error, args));
+          }
+          return value;
+        } catch (error) {
+          handlerFunction(error, args);
         }
-        return value;
-      } catch (error) {
-        handlerFunction(error, args);
-      }
-    };
+      };
+    } else {
+      descriptor.value = function (...args) {
+        try {
+          return originalMethod.apply(this, args);
+        } catch (error) {
+          handlerFunction(error, args);
+        }
+      };
+    }
   };
 }

@@ -22,6 +22,30 @@
 export function attempt(handlerFunction: Function): Function;
 
 /**
+ * @name consoleGroup
+ * @namespace method
+ * @param {string} label Decorates method with inline group in the Web Console log.
+ * @returns {Function}
+ * @example
+ * ```javascript
+ * class Class {
+ *   @consoleGroup("GROUP ASYNC")
+ *   async asyncRun() {
+ *     console.log("I'm async");
+ *   }
+ *   @consoleGroup("GROUP SYNC")
+ *   syncRun() {
+ *     console.log("I'm sync");
+ *   }
+ * }
+ * const test = new Class();
+ * test.syncRun();
+ * await test.asyncRun();
+ * @since 0.0.3
+ */
+export function consoleGroup(label: string): Function;
+
+/**
  * @name measureExecution
  * @namespace method
  * @param {string} label Measure method execution using `console.time()`

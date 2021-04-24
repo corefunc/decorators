@@ -1,49 +1,49 @@
 /**
- * @name measureExecution
+ * @name consoleGroup
  * @namespace method
- * @param {string} label Measure method execution using `console.time()`
+ * @param {string} label Decorates method with inline group in the Web Console log.
  * @returns {Function}
  * @example
  * ```javascript
  * class Class {
- *   @measureExecution("long execution time")
- *   hardTask() {
- *     let result = 0;
- *     for (let index = 0; index < 1_000_000_000; index++) {
- *       result += index;
- *     }
- *     return result;
+ *   @consoleGroup("GROUP ASYNC")
+ *   async asyncRun() {
+ *     console.log("I'm async");
+ *   }
+ *   @consoleGroup("GROUP SYNC")
+ *   syncRun() {
+ *     console.log("I'm sync");
  *   }
  * }
- * new Class().hardTask();
- * ```
- * @since 0.0.2
+ * const test = new Class();
+ * test.syncRun();
+ * await test.asyncRun();
+ * @since 0.0.3
  */
-export function measureExecution(label) {
-  return function measureExecutionDecorator(_target, _key, descriptor) {
+export function consoleGroup(label) {
+  return function consoleGroupDecorator(_target, _key, descriptor) {
     const originalMethod = descriptor.value;
     if (Object.prototype.toString.call(originalMethod) === "[object AsyncFunction]") {
       descriptor.value = async function (...args) {
-        console.time(label);
+        console.group(label);
         try {
           const value = await originalMethod.apply(this, args);
-          console.timeEnd(label);
+          console.groupEnd();
           return value;
         } catch (error) {
-          console.timeEnd(label);
+          console.groupEnd();
           throw error;
         }
       };
     } else {
       descriptor.value = function (...args) {
-        console.time(label);
+        console.group(label);
         try {
           const value = originalMethod.apply(this, args);
-          console.timeEnd(label);
+          console.groupEnd();
           return value;
         } catch (error) {
-          console.timeEnd(label);
-          throw error;
+          console.groupEnd();
         }
       };
     }
