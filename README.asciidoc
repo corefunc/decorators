@@ -1,0 +1,92 @@
+image:https://raw.githubusercontent.com/corefunc/decorators/master/.github/assets/logo_128.png?raw=true[CoreFunc
+Decorators,title="CoreFunc Decorators"]
+
+== CoreFunc Decorators
+
+Decorators for modern JavaScript.
+
+https://npmjs.com/package/@corefunc/decorators[image:https://badgen.net/npm/v/@corefunc/decorators?&icon=npm&label=npm&color=DD3636[NPM
+Version]]
+https://npmjs.com/package/@corefunc/decorators[image:https://badgen.net/npm/dt/@corefunc/decorators?&icon=terminal&label=downloads&color=009688[NPM
+Downloads]]
+https://github.com/corefunc/decorators[image:https://badgen.net/github/stars/corefunc/decorators?&icon=github&label=stars&color=FFCC33[GitHub
+Stars]] [image:https://github.com/coref[TypeScript Typings][ts-img]]
+https://travis-ci.com/github/corefunc/decorators[image:https://badgen.net/travis/corefunc/decorators?&icon=travis&label=build[Travis
+CI]]
+https://lgtm.com/projects/g/corefunc/decorators[image:https://badgen.net/lgtm/grade/g/corefunc/decorators?&icon=lgtm&label=lgtm:js/ts&color=00C853[LGTM]]
+
+'''''
+
+____
+*Please Note:* This is "Work in Progress" package. The new functionality
+will be added very slowly.
+____
+
+'''''
+
+=== Usage
+
+ECMAScript Module.
+
+[source,javascript]
+----
+import { attempt, measureExecution } from "@corefunc/decorators";
+----
+
+Deno (Pika https://pika.dev/[https://pika.dev/])
+
+[source,javascript]
+----
+import { attempt, measureExecution } from "https://cdn.pika.dev/@corefunc/decorators";
+----
+
+'''''
+
+=== Examples
+
+==== Method Decorators
+
+===== Attempt
+
+[source,typescript]
+----
+import { attempt } from "@corefunc/decorators";
+
+class Kitty {
+  @attempt((error: Error, args: any[]) => {
+    console.warn("Exception thrown!");
+    console.log(error.message); // "uwu"
+    console.dir(args); // [ 10, false ]
+  })
+  meow(volume: number, cute = true) {
+    throw new Error("uwu");
+  }
+}
+
+new Kitty().meow(10, false);
+----
+
+===== Measure Execution
+
+[source,typescript]
+----
+import { measureExecution } from "@corefunc/decorators";
+
+class Class {
+  @measureExecution(/* conole.time() label text */ "long execution time here")
+  hardTask() {
+    let result = 0;
+    for (let index = 0; index < 1_000_000_000; index++) {
+      result += index;
+    }
+    return result;
+  }
+}
+new Class().hardTask();
+----
+
+'''''
+
+=== See also
+
+https://r37r0m0d3l.icu/open_source_map[My other projects]

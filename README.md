@@ -1,11 +1,8 @@
-![CoreFunc](docs/img/logo_128.png?raw=true "CoreFunc")
+![CoreFunc Decorators](https://raw.githubusercontent.com/corefunc/decorators/master/.github/assets/logo_128.png?raw=true "CoreFunc Decorators")
 
 # CoreFunc Decorators
 
 Decorators for modern JavaScript.
-
-[![Buy Me A Coffee][buymeacoffee-img]][buymeacoffee-url]
-[![Follow New Releases][releasly-img]][releasly-url]
 
 [![NPM Version][npm-version-img]][npm-version-url]
 [![NPM Downloads][npm-downloads-img]][npm-downloads-url]
@@ -20,40 +17,18 @@ Decorators for modern JavaScript.
 
 ---
 
-*If you use this project don't forget to give a ⭐ [star](https://www.npmjs.com/package/@corefunc/decorators) ⭐ to it on GitHub!*
-
----
-
 ## Usage
-
-CommonJS import.
-
-```javascript
-const { attempt } = require("@corefunc/decorators");
-```
 
 ECMAScript Module.
 
 ```javascript
-import { attempt } from "@corefunc/decorators";
-```
-
-AMD, UMD, browser script tag.
-
-```html
-<script src="https://unpkg.com/@corefunc/decorators"></script>
-```
-
-CDN (unpkg [https://unpkg.com/](https://unpkg.com/))
-
-```html
-<script src="https://unpkg.com/@corefunc/decorators" type="module"></script>
+import { attempt, measureExecution } from "@corefunc/decorators";
 ```
 
 Deno (Pika [https://pika.dev/](https://pika.dev/))
 
 ```javascript
-import { attempt } from "https://cdn.pika.dev/@corefunc/decorators";
+import { attempt, measureExecution } from "https://cdn.pika.dev/@corefunc/decorators";
 ```
 
 ---
@@ -66,6 +41,7 @@ import { attempt } from "https://cdn.pika.dev/@corefunc/decorators";
 
 ```typescript
 import { attempt } from "@corefunc/decorators";
+
 class Kitty {
   @attempt((error: Error, args: any[]) => {
     console.warn("Exception thrown!");
@@ -80,18 +56,34 @@ class Kitty {
 new Kitty().meow(10, false);
 ```
 
+#### Measure Execution
+
+```typescript
+import { measureExecution } from "@corefunc/decorators";
+
+class Class {
+  @measureExecution(/* conole.time() label text */ "long execution time here")
+  hardTask() {
+    let result = 0;
+    for (let index = 0; index < 1_000_000_000; index++) {
+      result += index;
+    }
+    return result;
+  }
+}
+new Class().hardTask();
+```
+
 ---
 
 ## See also
 
 [My other projects](https://r37r0m0d3l.icu/open_source_map)
 
-<img src="https://raw.githubusercontent.com/r37r0m0d3l/r37r0m0d3l/master/osmap.svg?sanitize=true" width="960" height="520" style="display:block;height:auto;margin-left:auto;margin-right:auto;min-height:520px;min-width:960px;width:100%;">
+<img alt="Open Source" src="https://raw.githubusercontent.com/r37r0m0d3l/r37r0m0d3l/master/osmap.svg?sanitize=true" width="960" height="520" style="display:block;height:auto;margin-left:auto;margin-right:auto;min-height:520px;min-width:960px;width:100%;">
 
 <!-- Badges -->
 
-[buymeacoffee-url]: https://buymeacoffee.com/r37r0m0d3l
-[buymeacoffee-img]: https://img.shields.io/badge/support-buymeacoffee-1E90FF.svg?&logo=buy-me-a-coffee&label=support
 [gh-stars-url]: https://github.com/corefunc/decorators
 [gh-stars-img]: https://badgen.net/github/stars/corefunc/decorators?&icon=github&label=stars&color=FFCC33
 [lgtm-url]: https://lgtm.com/projects/g/corefunc/decorators

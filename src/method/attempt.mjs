@@ -2,7 +2,9 @@
  * @name attempt
  * @namespace method
  * @param {Function} handlerFunction Function to handle error, accepts one argument - actual error
+ * @returns {Function}
  * @example
+ * ```javascript
  * class Kitty {
  *   @attempt((error: Error, args: any[]) => {
  *     console.warn("Exception thrown!");
@@ -14,6 +16,8 @@
  *   }
  * }
  * new Kitty().meow(10, false);
+ * ```
+ * @since 0.0.1
  */
 export function attempt(handlerFunction) {
   return function (_target, _key, descriptor) {

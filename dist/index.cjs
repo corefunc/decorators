@@ -1,2 +1,2 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.attempt=function attempt(t){return function(e,c,n){const o=n.value;n.value=function(...e){try{const c=o.apply(this,e);return void 0!==c&&c.catch&&c.catch(c=>t(c,e)),c}catch(c){t(c,e)}}}};
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.attempt=function attempt(t){return function(e,n,c){const o=c.value;c.value=function(...e){try{const n=o.apply(this,e);return void 0!==n&&n.catch&&n.catch(n=>t(n,e)),n}catch(n){t(n,e)}}}},exports.measureExecution=function measureExecution(t){return function(e,n,c){const o=c.value;return c.value=async function(...e){console.time(t);const n=await o.apply(this,e);return console.timeEnd(t),n},c}};
 //# sourceMappingURL=index.cjs.map

@@ -1,2 +1,2 @@
-function attempt(t){return function(c,n,a){const e=a.value;a.value=function(...c){try{const n=e.apply(this,c);return void 0!==n&&n.catch&&n.catch(n=>t(n,c)),n}catch(n){t(n,c)}}}}export{attempt};
+function attempt(t){return function(n,e,c){const u=c.value;c.value=function(...n){try{const e=u.apply(this,n);return void 0!==e&&e.catch&&e.catch(e=>t(e,n)),e}catch(e){t(e,n)}}}}function measureExecution(t){return function(n,e,c){const u=c.value;return c.value=async function(...n){console.time(t);const e=await u.apply(this,n);return console.timeEnd(t),e},c}}export{attempt,measureExecution};
 //# sourceMappingURL=index.mjs.map
