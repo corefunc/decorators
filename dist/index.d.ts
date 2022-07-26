@@ -67,3 +67,28 @@ export function consoleGroup(label: string): Function;
  * @since 0.0.2
  */
 export function measureExecution(label: string): Function;
+
+/**
+ * @name Instance
+ * @namespace property
+ * @param {Function} constructor Class constructor.
+ * @param {boolean=} [silent=true] Suppress error.
+ * @returns {Function}
+ * @example
+ * ```javascript
+ * class ClassAlpha {
+ *   name;
+ * }
+ * class ClassBeta {
+ *   @Instance(ClassAlpha)
+ *   alpha;
+ *   constructor(alpha) {
+ *    this.alpha = alpha;
+ *   }
+ * }
+ * const beta = new ClassBeta({ name: 'ALPHA' });
+ * beta.alpha; // ClassAlpha
+ * ```
+ * @since 0.0.4
+ */
+export function Instance(constructor: new (...args: any[]) => any, silent?: boolean): Function;

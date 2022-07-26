@@ -99,6 +99,27 @@ class Class {
 new Class().hardTask();
 ```
 
+### Property Decorators
+
+#### Instance
+
+```typescript
+import { Instance } from "@corefunc/decorators";
+
+class ClassAlpha {
+  name;
+}
+class ClassBeta {
+  @Instance(ClassAlpha)
+  alpha;
+  constructor(alpha) {
+   this.alpha = alpha;
+  }
+}
+const beta = new ClassBeta({ name: 'ALPHA' });
+beta.alpha; // ClassAlpha
+```
+
 ---
 
 ## See also
