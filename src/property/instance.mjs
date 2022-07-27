@@ -46,3 +46,30 @@ export function Instance(constructor, silent = true) {
     });
   };
 }
+
+/**
+ * @name Instance
+ * @namespace property
+ * @param {Function} constructor Class constructor.
+ * @param {boolean=} [silent=true] Suppress error.
+ * @returns {Function}
+ * @example
+ * ```javascript
+ * class ClassAlpha {
+ *   name;
+ * }
+ * class ClassBeta {
+ *   @Instance(ClassAlpha)
+ *   alpha;
+ *   constructor(alpha) {
+ *    this.alpha = alpha;
+ *   }
+ * }
+ * const beta = new ClassBeta({ name: 'ALPHA' });
+ * beta.alpha; // ClassAlpha
+ * ```
+ * @since 0.0.5
+ */
+export function instance(constructor, silent = true) {
+  return Instance(constructor, silent);
+}
